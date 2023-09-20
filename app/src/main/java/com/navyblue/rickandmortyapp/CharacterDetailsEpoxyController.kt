@@ -10,37 +10,37 @@ import com.squareup.picasso.Picasso
 
 class CharacterDetailsEpoxyController : EpoxyController() {
 
-    private var isLoading : Boolean = true
-        set(value){
+    private var isLoading: Boolean = true
+        set(value) {
             field = value
-            if(field){
+            if (field) {
                 requestModelBuild()
             }
         }
 
-    var characterResponse : GetCharacterByIdResponse? = null
-        set(value){
+    var characterResponse: GetCharacterByIdResponse? = null
+        set(value) {
             field = value
-            if(field!= null){
+            if (field != null) {
                 isLoading = false
                 requestModelBuild()
             }
         }
 
     override fun buildModels() {
-        if(isLoading){
+        if (isLoading) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
 
-        if (characterResponse == null){
+        if (characterResponse == null) {
             return
         }
 
 
         data class ImageEpoxyModel(
             val imageUrl: String
-        ): ViewBindingKotlinModel<ModelCharacterImageBinding>(R.layout.model_character_image){
+        ) : ViewBindingKotlinModel<ModelCharacterImageBinding>(R.layout.model_character_image) {
             override fun ModelCharacterImageBinding.bind() {
                 Picasso.get().load(imageUrl).into(HeaderImageView)
             }
@@ -55,7 +55,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             val name: String,
             val gender: String,
             val status: String
-        ): ViewBindingKotlinModel<ModelCharacterNameGenderBinding>(R.layout.model_character_name_gender){
+        ) : ViewBindingKotlinModel<ModelCharacterNameGenderBinding>(R.layout.model_character_name_gender) {
             override fun ModelCharacterNameGenderBinding.bind() {
                 nameTextView.text = name
                 statusTextView.text = status
@@ -76,10 +76,10 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         data class LocationEpoxyModel(
             val title: String,
             val description: String
-        ): ViewBindingKotlinModel<ModelCharacterLocationBinding>(R.layout.model_character_location){
+        ) : ViewBindingKotlinModel<ModelCharacterLocationBinding>(R.layout.model_character_location) {
             override fun ModelCharacterLocationBinding.bind() {
-                originLabelTextView.text=title
-                originTextView.text=description
+                originLabelTextView.text = title
+                originTextView.text = description
             }
 
         }

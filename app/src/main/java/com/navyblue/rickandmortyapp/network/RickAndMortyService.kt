@@ -1,6 +1,6 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.network
 
-import retrofit2.Call
+import com.navyblue.rickandmortyapp.GetCharacterByIdResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

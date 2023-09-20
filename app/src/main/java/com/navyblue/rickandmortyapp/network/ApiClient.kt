@@ -1,5 +1,6 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.network
 
+import com.navyblue.rickandmortyapp.GetCharacterByIdResponse
 import retrofit2.Response
 
 class ApiClient(
@@ -9,7 +10,7 @@ class ApiClient(
         return safeApiCall { rickAndMortyService.getCharacterById(characterById) }
     }
 
-    private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T>{
+    private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {
         return try{
             SimpleResponse.success(apiCall.invoke())
         }catch (e: Exception){

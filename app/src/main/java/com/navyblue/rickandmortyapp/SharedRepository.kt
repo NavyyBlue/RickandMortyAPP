@@ -1,5 +1,7 @@
 package com.navyblue.rickandmortyapp
 
+import com.navyblue.rickandmortyapp.network.NetworkLayer
+
 class SharedRepository {
 
     suspend fun getCharacterById(characterById : Int): GetCharacterByIdResponse? {
