@@ -9,17 +9,6 @@ import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 import java.util.concurrent.ConcurrentHashMap
 
-/**
- * A pattern for using epoxy models with Kotlin with no annotations or code generation.
- *
- * See [com.airbnb.epoxy.kotlinsample.models.ItemViewBindingDataClass] for a usage example.
- *
- * If You use Proguard or R8, be sure to keep the bind method available with the following configuration:
- *
- * -keepclassmembers class * extends androidx.viewbinding.ViewBinding {
- *    public static *** bind(android.view.View);
- * }
- */
 abstract class ViewBindingKotlinModel<T : ViewBinding>(
     @LayoutRes private val layoutRes: Int
 ) : EpoxyModel<View>() {
@@ -42,7 +31,6 @@ abstract class ViewBindingKotlinModel<T : ViewBinding>(
     override fun getDefaultLayout() = layoutRes
 }
 
-// Static cache of a method pointer for each type of item used.
 private val sBindingMethodByClass = ConcurrentHashMap<Class<*>, Method>()
 
 @Suppress("UNCHECKED_CAST")

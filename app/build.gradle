@@ -66,4 +66,6 @@ dependencies {
 
     implementation 'androidx.palette:palette:1.0.0'
 
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.4'
+
 }
