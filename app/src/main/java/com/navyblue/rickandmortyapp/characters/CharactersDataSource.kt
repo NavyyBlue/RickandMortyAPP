@@ -1,7 +1,7 @@
 package com.navyblue.rickandmortyapp.characters
 
 import androidx.paging.PageKeyedDataSource
-import com.navyblue.rickandmortyapp.GetCharacterByIdResponse
+import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

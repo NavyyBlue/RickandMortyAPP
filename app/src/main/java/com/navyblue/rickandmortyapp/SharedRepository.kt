@@ -1,6 +1,7 @@
 package com.navyblue.rickandmortyapp
 
 import com.navyblue.rickandmortyapp.network.NetworkLayer
+import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 
 class SharedRepository {
 

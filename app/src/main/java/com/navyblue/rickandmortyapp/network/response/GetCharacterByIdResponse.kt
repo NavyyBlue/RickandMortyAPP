@@ -1,4 +1,4 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.network.response
 
 data class GetCharacterByIdResponse(
     val created: String = "",

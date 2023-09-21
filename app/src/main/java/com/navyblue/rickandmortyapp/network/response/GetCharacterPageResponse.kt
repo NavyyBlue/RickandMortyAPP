@@ -1,7 +1,5 @@
 package com.navyblue.rickandmortyapp.network.response
 
-import com.navyblue.rickandmortyapp.GetCharacterByIdResponse
-
 data class GetCharacterPageResponse(
     val info: Info = Info(),
     val results: List<GetCharacterByIdResponse> = emptyList()

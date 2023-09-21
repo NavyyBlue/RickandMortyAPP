@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.navyblue.rickandmortyapp.Constants
-import com.navyblue.rickandmortyapp.GetCharacterByIdResponse
+import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 
 class CharactersViewModel : ViewModel() {
 
