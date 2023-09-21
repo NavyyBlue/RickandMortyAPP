@@ -16,5 +16,6 @@ class CharactersViewModel : ViewModel() {
         .setPrefetchDistance(Constants.PREFETCH_DISTANCE).build()
 
     private val dataSourceFactory = CharacterDataSourceFactory(viewModelScope, repository)
-    val charactersPagedListLiveData: LiveData<PagedList<GetCharacterByIdResponse>> = LivePagedListBuilder(dataSourceFactory, pageListConfig).build()
+    val charactersPagedListLiveData: LiveData<PagedList<GetCharacterByIdResponse>> =
+        LivePagedListBuilder(dataSourceFactory, pageListConfig).build()
 }
