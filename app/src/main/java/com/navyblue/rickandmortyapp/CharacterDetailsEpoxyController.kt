@@ -4,6 +4,7 @@ import com.airbnb.epoxy.EpoxyController
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterImageBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterLocationBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterNameGenderBinding
+import com.navyblue.rickandmortyapp.domain.models.Character
 import com.navyblue.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.navyblue.rickandmortyapp.epoxy.ViewBindingKotlinModel
 import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
@@ -19,7 +20,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             }
         }
 
-    var characterResponse: GetCharacterByIdResponse? = null
+    var character: Character? = null
         set(value) {
             field = value
             if (field != null) {
@@ -34,7 +35,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             return
         }
 
-        if (characterResponse == null) {
+        if (character == null) {
             return
         }
 
@@ -48,7 +49,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         }
 
         ImageEpoxyModel(
-            imageUrl = characterResponse!!.image
+            imageUrl = character!!.image
         ).id("image").addTo(this)
 
 
@@ -68,9 +69,9 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         }
 
         NameGenderEpoxyModel(
-            name = characterResponse!!.name,
-            gender = characterResponse!!.gender,
-            status = characterResponse!!.status
+            name = character!!.name,
+            gender = character!!.gender,
+            status = character!!.status
         ).id("name").addTo(this)
 
 
@@ -87,12 +88,12 @@ class CharacterDetailsEpoxyController : EpoxyController() {
 
         LocationEpoxyModel(
             title = "Origin",
-            description = characterResponse!!.origin.name
+            description = character!!.origin.name
         ).id("location").addTo(this)
 
         LocationEpoxyModel(
             title = "Species",
-            description = characterResponse!!.species
+            description = character!!.species
         ).id("species").addTo(this)
 
     }
