@@ -7,7 +7,6 @@ import com.navyblue.rickandmortyapp.databinding.ModelCharacterNameGenderBinding
 import com.navyblue.rickandmortyapp.domain.models.Character
 import com.navyblue.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.navyblue.rickandmortyapp.epoxy.ViewBindingKotlinModel
-import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.squareup.picasso.Picasso
 
 class CharacterDetailsEpoxyController : EpoxyController() {
