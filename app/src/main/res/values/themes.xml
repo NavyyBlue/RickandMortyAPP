@@ -39,4 +39,5 @@
     </style>
 
     <style name="Theme.RickAndMortyAPP" parent="Base.Theme.RickAndMortyAPP" />
+
 </resources>

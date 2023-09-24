@@ -1,10 +1,15 @@
 package com.navyblue.rickandmortyapp
 
+import android.annotation.SuppressLint
+import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
+import com.navyblue.rickandmortyapp.databinding.ModelCharacterDescriptionBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterImageBinding
-import com.navyblue.rickandmortyapp.databinding.ModelCharacterLocationBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterNameGenderBinding
+import com.navyblue.rickandmortyapp.databinding.ModelEpisodeCarouselItemBinding
+import com.navyblue.rickandmortyapp.databinding.ModelTitleBinding
 import com.navyblue.rickandmortyapp.domain.models.Character
+import com.navyblue.rickandmortyapp.domain.models.Episode
 import com.navyblue.rickandmortyapp.epoxy.LoadingEpoxyModel
 import com.navyblue.rickandmortyapp.epoxy.ViewBindingKotlinModel
 import com.squareup.picasso.Picasso
@@ -74,26 +79,61 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         ).id("name").addTo(this)
 
 
-        data class LocationEpoxyModel(
+        data class DescriptionEpoxyModel(
             val title: String,
             val description: String
-        ) : ViewBindingKotlinModel<ModelCharacterLocationBinding>(R.layout.model_character_location) {
-            override fun ModelCharacterLocationBinding.bind() {
+        ) : ViewBindingKotlinModel<ModelCharacterDescriptionBinding>(R.layout.model_character_description) {
+            override fun ModelCharacterDescriptionBinding.bind() {
                 originLabelTextView.text = title
                 originTextView.text = description
             }
 
         }
 
-        LocationEpoxyModel(
-            title = "Origin",
-            description = character!!.origin.name
-        ).id("location").addTo(this)
-
-        LocationEpoxyModel(
+        DescriptionEpoxyModel(
             title = "Species",
             description = character!!.species
         ).id("species").addTo(this)
 
+        DescriptionEpoxyModel(
+            title = "Origin",
+            description = character!!.origin.name
+        ).id("origin").addTo(this)
+
+        DescriptionEpoxyModel(
+            title = "Last know location",
+            description = character!!.location.name
+        ).id("location").addTo(this)
+
+        data class TitleEpoxyModel(
+            val title: String
+        ): ViewBindingKotlinModel<ModelTitleBinding>(R.layout.model_title){
+            override fun ModelTitleBinding.bind() {
+                titleTextView.text= title
+            }
+        }
+
+
+        data class EpisodeCarouselItemEpoxyModel(
+            val episode: Episode
+        ): ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item){
+            @SuppressLint("SetTextI18n")
+            override fun ModelEpisodeCarouselItemBinding.bind() {
+                episodeTextView.text = episode.episode
+                episodeDetailsTextView.text = "${episode.name}\n${episode.airDate}"
+            }
+        }
+
+        if (character!!.episodeList.isNotEmpty()){
+            TitleEpoxyModel(title = "Episodes").id("title_episodes").addTo(this)
+            val items = character!!.episodeList.map {
+                EpisodeCarouselItemEpoxyModel(it).id(it.id)
+            }
+            CarouselModel_()
+                .id("episode_carousel")
+                .models(items)
+                .numViewsToShowOnScreen(1.15f)
+                .addTo(this)
+        }
     }
 }

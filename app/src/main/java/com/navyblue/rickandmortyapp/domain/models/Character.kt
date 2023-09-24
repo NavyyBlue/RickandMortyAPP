@@ -1,8 +1,8 @@
 package com.navyblue.rickandmortyapp.domain.models
 
 data class Character(
-    val created: String = "",
     val episodeList: List<Episode> = listOf(),
+    val created: String = "",
     val gender: String = "",
     val id: Int = 0,
     val image: String = "",

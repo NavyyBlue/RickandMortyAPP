@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="text">#FF000000</color>
+    <color name="text">#FFFFFFFF</color>
 
     <color name="seed">#F0E14A</color>
     <color name="md_theme_light_primary">#686000</color>
