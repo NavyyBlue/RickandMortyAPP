@@ -3,6 +3,7 @@ package com.navyblue.rickandmortyapp.characters
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.navyblue.rickandmortyapp.Constants
@@ -18,6 +19,7 @@ class CharacterListActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContentView(R.layout.activity_character_list)
         viewModel.charactersPagedListLiveData.observe(this){pagedList->
             epoxyController.submitList(pagedList)
