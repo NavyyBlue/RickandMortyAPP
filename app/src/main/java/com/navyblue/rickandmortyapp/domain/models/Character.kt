@@ -11,13 +11,14 @@ data class Character(
     val origin: Origin = Origin(),
     val species: String = "",
     val status: String = ""
-){
+) {
     data class Location(
-        val name : String = "",
-        val url : String = ""
+        val name: String = "",
+        val url: String = ""
     )
+
     data class Origin(
-        val name : String = "",
-        val url : String = ""
+        val name: String = "",
+        val url: String = ""
     )
 }

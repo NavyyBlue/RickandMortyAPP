@@ -57,14 +57,17 @@ class CharacterDetailsEpoxyController : EpoxyController() {
         ).id("image").addTo(this)
 
 
-        data class NameGenderEpoxyModel(
+        data class DetailsCharacterEpoxyModel(
             val name: String,
             val gender: String,
-            val status: String
+            val status: String,
+            val species: String
         ) : ViewBindingKotlinModel<ModelCharacterNameGenderBinding>(R.layout.model_character_name_gender) {
             override fun ModelCharacterNameGenderBinding.bind() {
                 nameTextView.text = name
                 statusTextView.text = status
+                speciesTextView.text = species
+                genderImageView.tooltipText= "$gender gender"
 
                 if (gender.equals("male", true))
                     genderImageView.setImageResource(R.drawable.ic_male)
@@ -72,10 +75,11 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             }
         }
 
-        NameGenderEpoxyModel(
+        DetailsCharacterEpoxyModel(
             name = character!!.name,
             gender = character!!.gender,
-            status = character!!.status
+            status = character!!.status,
+            species = character!!.species
         ).id("name").addTo(this)
 
 
@@ -84,16 +88,16 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             val description: String
         ) : ViewBindingKotlinModel<ModelCharacterDescriptionBinding>(R.layout.model_character_description) {
             override fun ModelCharacterDescriptionBinding.bind() {
-                originLabelTextView.text = title
-                originTextView.text = description
+                descriptionTextView.text = description
+                descriptionImageView.tooltipText= title
+
+                if (title.equals("Origin", true))
+                    descriptionImageView.setImageResource(R.drawable.ic_origin)
+                else
+                    descriptionImageView.setImageResource(R.drawable.ic_location)
             }
 
         }
-
-        DescriptionEpoxyModel(
-            title = "Species",
-            description = character!!.species
-        ).id("species").addTo(this)
 
         DescriptionEpoxyModel(
             title = "Origin",
@@ -107,16 +111,16 @@ class CharacterDetailsEpoxyController : EpoxyController() {
 
         data class TitleEpoxyModel(
             val title: String
-        ): ViewBindingKotlinModel<ModelTitleBinding>(R.layout.model_title){
+        ) : ViewBindingKotlinModel<ModelTitleBinding>(R.layout.model_title) {
             override fun ModelTitleBinding.bind() {
-                titleTextView.text= title
+                titleTextView.text = title
             }
         }
 
 
         data class EpisodeCarouselItemEpoxyModel(
             val episode: Episode
-        ): ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item){
+        ) : ViewBindingKotlinModel<ModelEpisodeCarouselItemBinding>(R.layout.model_episode_carousel_item) {
             @SuppressLint("SetTextI18n")
             override fun ModelEpisodeCarouselItemBinding.bind() {
                 episodeTextView.text = episode.episode
@@ -124,7 +128,7 @@ class CharacterDetailsEpoxyController : EpoxyController() {
             }
         }
 
-        if (character!!.episodeList.isNotEmpty()){
+        if (character!!.episodeList.isNotEmpty()) {
             TitleEpoxyModel(title = "Episodes").id("title_episodes").addTo(this)
             val items = character!!.episodeList.map {
                 EpisodeCarouselItemEpoxyModel(it).id(it.id)
