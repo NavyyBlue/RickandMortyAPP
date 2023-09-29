@@ -71,6 +71,11 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:3.2.1"
     implementation 'androidx.palette:palette:1.0.0'
 
+    //Networking
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    debugImplementation "com.github.chuckerteam.chucker:library:4.0.0"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:4.0.0"
+
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.4'
 
 }

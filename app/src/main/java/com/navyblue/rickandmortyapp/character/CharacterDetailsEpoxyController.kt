@@ -1,8 +1,9 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.character
 
 import android.annotation.SuppressLint
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
+import com.navyblue.rickandmortyapp.R
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterDescriptionBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterImageBinding
 import com.navyblue.rickandmortyapp.databinding.ModelCharacterNameGenderBinding

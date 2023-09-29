@@ -1,4 +1,4 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.character
 
 import com.navyblue.rickandmortyapp.domain.mappers.CharacterMapper
 import com.navyblue.rickandmortyapp.domain.models.Character

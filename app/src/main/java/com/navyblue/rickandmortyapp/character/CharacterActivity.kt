@@ -1,10 +1,12 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.character
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.navyblue.rickandmortyapp.Constants
+import com.navyblue.rickandmortyapp.R
 
 class CharacterActivity : AppCompatActivity() {
 

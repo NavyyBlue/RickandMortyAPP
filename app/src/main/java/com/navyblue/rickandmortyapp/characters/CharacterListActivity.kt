@@ -7,7 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.navyblue.rickandmortyapp.Constants
-import com.navyblue.rickandmortyapp.CharacterActivity
+import com.navyblue.rickandmortyapp.character.CharacterActivity
 import com.navyblue.rickandmortyapp.R
 
 class CharacterListActivity : AppCompatActivity() {
