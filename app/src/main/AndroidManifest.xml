@@ -24,15 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".character.CharacterActivity"
-            android:theme="@style/Base.Theme.RickAndMortyAPP">
-        </activity>
-        <activity
-            android:name=".characters.CharacterListActivity"
-            android:exported="true">
-
-        </activity>
     </application>
 
 </manifest>

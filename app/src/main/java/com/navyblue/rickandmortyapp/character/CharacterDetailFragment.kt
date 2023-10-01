@@ -1,4 +1,4 @@
-package com.navyblue.rickandmortyapp
+package com.navyblue.rickandmortyapp.character
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.navyblue.rickandmortyapp.character.CharacterDetailsEpoxyController
-import com.navyblue.rickandmortyapp.character.SharedViewModel
+import com.navyblue.rickandmortyapp.R
 
 class CharacterDetailFragment : Fragment() {
 
