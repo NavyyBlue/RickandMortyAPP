@@ -13,8 +13,6 @@ import java.util.Locale
 
 class CharacterListPagingEpoxyController(private val onCharacterSelected: (Int) -> Unit) :
     PagedListEpoxyController<GetCharacterByIdResponse>() {
-
-
     override fun buildItemModel(
         currentPosition: Int,
         item: GetCharacterByIdResponse?
