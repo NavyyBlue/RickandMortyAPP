@@ -32,4 +32,9 @@
             app:argType="integer"
             android:defaultValue="-1"/>
     </fragment>
+    <fragment
+        android:id="@+id/episodeListFragment"
+        android:name="com.navyblue.rickandmortyapp.EpisodeListFragment"
+        android:label="fragment_episode_list"
+        tools:layout="@layout/fragment_episode_list" />
 </navigation>

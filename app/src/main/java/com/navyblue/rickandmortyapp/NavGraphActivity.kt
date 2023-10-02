@@ -1,15 +1,17 @@
 package com.navyblue.rickandmortyapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.NavController
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 
 class NavGraphActivity : AppCompatActivity() {
 
@@ -27,11 +29,17 @@ class NavGraphActivity : AppCompatActivity() {
         setSupportActionBar(toolbarHome)
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        appBarConfiguration = AppBarConfiguration(topLevelDestinationIds = setOf(R.id.characterListFragment, R.id.episodeListFragment), drawerLayout)
         setupActionBarWithNavController(
             navController = navController,
             configuration = appBarConfiguration
         )
+        findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
+        findViewById<NavigationView>(R.id.nav_view).setCheckedItem(
+            navController.graph.startDestinationId
+        )
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
