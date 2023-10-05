@@ -2,24 +2,31 @@ package com.navyblue.rickandmortyapp.character
 
 import com.navyblue.rickandmortyapp.domain.mappers.CharacterMapper
 import com.navyblue.rickandmortyapp.domain.models.Character
+import com.navyblue.rickandmortyapp.network.CacheApp
 import com.navyblue.rickandmortyapp.network.NetworkLayer
 import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.navyblue.rickandmortyapp.network.response.GetEpisodeByIdResponse
 
-class SharedRepository {
+class CharacterDetailsRepository {
 
-    suspend fun getCharacterById(characterById: Int): Character? {
-        val request = NetworkLayer.apiClient.getCharacterById(characterById)
+    suspend fun getCharacterById(characterId: Int): Character? {
 
-        if (request.failed) {
-            return null
+        val cacheCharacter = CacheApp.characterMap[characterId]
+        if (cacheCharacter!= null){
+            return cacheCharacter
         }
-        if (!request.isSuccessful) {
+
+        val request = NetworkLayer.apiClient.getCharacterById(characterId)
+
+        if (request.failed || !request.isSuccessful) {
             return null
         }
 
         val networkEpisode = getEpisodesFromCharacterResponse(request.body)
-        return CharacterMapper.buildFrom(response = request.body, episodes = networkEpisode)
+        val character = CharacterMapper.buildFrom(response = request.body, episodes = networkEpisode)
+
+        CacheApp.characterMap[characterId] = character
+        return character
     }
 
     private suspend fun getEpisodesFromCharacterResponse(

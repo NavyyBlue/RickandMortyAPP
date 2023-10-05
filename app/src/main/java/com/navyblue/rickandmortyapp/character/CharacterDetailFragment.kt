@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.navyblue.rickandmortyapp.R
 
 class CharacterDetailFragment : Fragment() {
 
-    private val viewModel: SharedViewModel by lazy {
-        ViewModelProvider(this).get(SharedViewModel::class.java)
+    private val viewModel: CharacterDetailsViewModel by lazy {
+        ViewModelProvider(this).get(CharacterDetailsViewModel::class.java)
     }
 
     private val epoxyController = CharacterDetailsEpoxyController()
@@ -37,6 +38,7 @@ class CharacterDetailFragment : Fragment() {
             epoxyController.character = character
             if (character == null) {
                 Toast.makeText(requireActivity(), "Error network call", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
                 return@observe
             }
 

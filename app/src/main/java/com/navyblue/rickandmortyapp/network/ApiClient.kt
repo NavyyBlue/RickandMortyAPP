@@ -3,6 +3,7 @@ package com.navyblue.rickandmortyapp.network
 import com.navyblue.rickandmortyapp.network.response.GetCharacterByIdResponse
 import com.navyblue.rickandmortyapp.network.response.GetCharacterPageResponse
 import com.navyblue.rickandmortyapp.network.response.GetEpisodeByIdResponse
+import com.navyblue.rickandmortyapp.network.response.GetEpisodePageResponse
 import retrofit2.Response
 
 class ApiClient(
@@ -22,6 +23,10 @@ class ApiClient(
 
     suspend fun getEpisodeRange(episodeRange: String): SimpleResponse<List<GetEpisodeByIdResponse>> {
         return safeApiCall { rickAndMortyService.getEpisodeRange(episodeRange) }
+    }
+
+    suspend fun getEpisodePage(pageIndex: Int): SimpleResponse<GetEpisodePageResponse>{
+        return safeApiCall { rickAndMortyService.getEpisodePage(pageIndex)}
     }
 
     private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {

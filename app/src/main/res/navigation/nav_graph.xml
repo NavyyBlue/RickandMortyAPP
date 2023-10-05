@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/episodeListFragment"
-        android:name="com.navyblue.rickandmortyapp.EpisodeListFragment"
+        android:name="com.navyblue.rickandmortyapp.episodes.EpisodeListFragment"
         android:label="fragment_episode_list"
         tools:layout="@layout/fragment_episode_list" />
 </navigation>

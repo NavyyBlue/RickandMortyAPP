@@ -1,6 +1,8 @@
 package com.navyblue.rickandmortyapp
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -39,6 +41,12 @@ class NavGraphActivity : AppCompatActivity() {
         findViewById<NavigationView>(R.id.nav_view).setCheckedItem(
             navController.graph.startDestinationId
         )
+
+        val hola = findViewById<Button>(R.id.buttonSearch)
+        hola.setOnClickListener {
+            Toast.makeText(this@NavGraphActivity, "Buscar en proceso", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
