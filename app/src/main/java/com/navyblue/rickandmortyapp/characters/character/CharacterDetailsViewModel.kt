@@ -1,4 +1,4 @@
-package com.navyblue.rickandmortyapp.character
+package com.navyblue.rickandmortyapp.characters.character
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

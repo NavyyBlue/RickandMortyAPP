@@ -9,7 +9,7 @@ import com.navyblue.rickandmortyapp.databinding.ModelEpisodeListTitleBinding
 import com.navyblue.rickandmortyapp.domain.models.Episode
 import com.navyblue.rickandmortyapp.epoxy.ViewBindingKotlinModel
 
-class EpisodeListEpoxyController: PagingDataEpoxyController<EpisodesUiModel>() {
+class EpisodeListEpoxyController( private val onEpisodeClicked: (Int) -> Unit): PagingDataEpoxyController<EpisodesUiModel>() {
     override fun buildItemModel(currentPosition: Int, item: EpisodesUiModel?): EpoxyModel<*> {
         return when(item!!){
             is EpisodesUiModel.Item->{
@@ -17,7 +17,7 @@ class EpisodeListEpoxyController: PagingDataEpoxyController<EpisodesUiModel>() {
                 EpisodeListItemEpoxyModel(
                     episode = episode,
                     onClick = { episodeId->
-                        //Todo
+                        onEpisodeClicked(episodeId)
                     }
                 ).id("episode_${episode.id}")
             }

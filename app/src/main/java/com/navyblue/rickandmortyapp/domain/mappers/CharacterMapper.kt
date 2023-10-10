@@ -7,7 +7,7 @@ import com.navyblue.rickandmortyapp.network.response.GetCharacterPageResponse
 import com.navyblue.rickandmortyapp.network.response.GetEpisodeByIdResponse
 
 object CharacterMapper {
-    fun buildFrom(response: GetCharacterByIdResponse, episodes: List<GetEpisodeByIdResponse>): Character{
+    fun buildFrom(response: GetCharacterByIdResponse, episodes: List<GetEpisodeByIdResponse> = emptyList()): Character{
         return  Character(
             episodeList = episodes.map {
                 EpisodeMapper.buildFrom(it)

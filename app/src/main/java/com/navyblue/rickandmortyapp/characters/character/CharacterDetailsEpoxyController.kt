@@ -1,4 +1,4 @@
-package com.navyblue.rickandmortyapp.character
+package com.navyblue.rickandmortyapp.characters.character
 
 import android.annotation.SuppressLint
 import com.airbnb.epoxy.CarouselModel_

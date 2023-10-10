@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.navyblue.rickandmortyapp.character.CharacterDetailFragment"
+        android:name="com.navyblue.rickandmortyapp.characters.character.CharacterDetailFragment"
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail">
 
@@ -36,5 +36,24 @@
         android:id="@+id/episodeListFragment"
         android:name="com.navyblue.rickandmortyapp.episodes.EpisodeListFragment"
         android:label="fragment_episode_list"
-        tools:layout="@layout/fragment_episode_list" />
+        tools:layout="@layout/fragment_episode_list" >
+        <action
+            android:id="@+id/action_episodeListFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchCharacterFragment"
+        android:name="com.navyblue.rickandmortyapp.SearchCharacterFragment"
+        android:label="fragment_search_character"
+        tools:layout="@layout/fragment_search_character" />
+    <dialog
+        android:id="@+id/episodeDetailsFragment"
+        android:name="com.navyblue.rickandmortyapp.episodes.episode.EpisodeDetailsFragment"
+        android:label="fragment_episode_details"
+        tools:layout="@layout/fragment_episode_details" >
+        <argument
+            android:name="episodeId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+    </dialog>
 </navigation>
